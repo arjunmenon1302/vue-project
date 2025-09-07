@@ -1,13 +1,13 @@
 <template>
   <div class="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 p-4">
     <div class="max-w-2xl mx-auto">
-       Header 
+       Header
       <div class="text-center mb-8">
         <h1 class="text-4xl font-bold text-gray-800 mb-2">Vue Task Manager</h1>
         <p class="text-gray-600">Demonstrating Vue.js fundamentals with style</p>
       </div>
 
-       Stats Cards 
+       Stats Cards
       <div class="grid grid-cols-3 gap-4 mb-8">
         <div class="bg-white rounded-lg p-4 shadow-md text-center">
           <div class="text-2xl font-bold text-blue-600">{{ totalTasks }}</div>
@@ -23,7 +23,7 @@
         </div>
       </div>
 
-       Add Task Form 
+       Add Task Form
       <div class="bg-white rounded-lg shadow-md p-6 mb-6">
         <h2 class="text-xl font-semibold mb-4">Add New Task</h2>
         <form @submit.prevent="addTask" class="space-y-4">
@@ -55,7 +55,7 @@
         </form>
       </div>
 
-       Search and Filter 
+       Search and Filter
       <div class="bg-white rounded-lg shadow-md p-4 mb-6">
         <div class="flex gap-4">
           <input
@@ -75,7 +75,7 @@
         </div>
       </div>
 
-       Tasks List 
+       Tasks List
       <div class="space-y-3">
         <div
           v-for="task in filteredTasks"
@@ -132,7 +132,7 @@
           </div>
         </div>
 
-         Empty State 
+         Empty State
         <div
           v-if="filteredTasks.length === 0"
           class="text-center py-12 text-gray-500"
@@ -145,7 +145,7 @@
         </div>
       </div>
 
-       Progress Bar 
+       Progress Bar
       <div v-if="totalTasks > 0" class="mt-8 bg-white rounded-lg shadow-md p-4">
         <div class="flex justify-between items-center mb-2">
           <span class="text-sm font-medium text-gray-700">Progress</span>
@@ -162,11 +162,17 @@
   </div>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { ref, computed, onMounted } from 'vue'
 
+type Task = {
+  completed: boolean;
+  value: string;
+  title: string;
+}
+
 // Reactive state
-const tasks = ref([])
+const tasks = []
 const searchQuery = ref('')
 const filterStatus = ref('all')
 const newTask = ref({
@@ -178,7 +184,7 @@ const newTask = ref({
 const totalTasks = computed(() => tasks.value.length)
 const completedTasks = computed(() => tasks.value.filter(task => task.completed).length)
 const pendingTasks = computed(() => tasks.value.filter(task => !task.completed).length)
-const progressPercentage = computed(() => 
+const progressPercentage = computed(() =>
   totalTasks.value > 0 ? (completedTasks.value / totalTasks.value) * 100 : 0
 )
 
@@ -212,7 +218,7 @@ const addTask = () => {
       completed: false,
       createdAt: new Date()
     })
-    
+
     // Reset form
     newTask.value.title = ''
     newTask.value.priority = 'medium'

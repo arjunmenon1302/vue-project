@@ -1,4 +1,4 @@
-<!-- <script setup lang="ts">
+<script setup lang="ts">
 import { RouterLink, RouterView } from 'vue-router'
 import HelloWorld from './components/HelloWorld.vue'
 </script>
@@ -82,9 +82,9 @@ nav a:first-of-type {
     margin-top: 1rem;
   }
 }
-</style> -->
+</style>
 
-<template>
+<!-- <template>
   <div class="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 p-4">
     <div class="max-w-2xl mx-auto">
       Header
@@ -268,88 +268,88 @@ const newTask = ref({
 })
 
 // Computed properties
-const totalTasks = computed(() => tasks.value.length)
-const completedTasks = computed(() => tasks.value.filter((task) => task.completed).length)
-const pendingTasks = computed(() => tasks.value.filter((task) => !task.completed).length)
-const progressPercentage = computed(() =>
-  totalTasks.value > 0 ? (completedTasks.value / totalTasks.value) * 100 : 0,
-)
+// const totalTasks = computed(() => tasks.value.length)
+// const completedTasks = computed(() => tasks.value.filter((task) => task.completed).length)
+// const pendingTasks = computed(() => tasks.value.filter((task) => !task.completed).length)
+// const progressPercentage = computed(() =>
+//   totalTasks.value > 0 ? (completedTasks.value / totalTasks.value) * 100 : 0,
+// )
 
-const filteredTasks = computed(() => {
-  let filtered = tasks.value
+// const filteredTasks = computed(() => {
+//   let filtered = tasks.value
 
-  // Filter by search query
-  if (searchQuery.value) {
-    filtered = filtered.filter((task) =>
-      task.title.toLowerCase().includes(searchQuery.value.toLowerCase()),
-    )
-  }
+//   // Filter by search query
+//   if (searchQuery.value) {
+//     filtered = filtered.filter((task) =>
+//       task.title.toLowerCase().includes(searchQuery.value.toLowerCase()),
+//     )
+//   }
 
-  // Filter by status
-  if (filterStatus.value === 'completed') {
-    filtered = filtered.filter((task) => task.completed)
-  } else if (filterStatus.value === 'pending') {
-    filtered = filtered.filter((task) => !task.completed)
-  }
+//   // Filter by status
+//   if (filterStatus.value === 'completed') {
+//     filtered = filtered.filter((task) => task.completed)
+//   } else if (filterStatus.value === 'pending') {
+//     filtered = filtered.filter((task) => !task.completed)
+//   }
 
-  return filtered
-})
+//   return filtered
+// })
 
-// Methods
-const addTask = () => {
-  if (newTask.value.title.trim()) {
-    tasks.value.push({
-      id: Date.now(),
-      title: newTask.value.title.trim(),
-      priority: newTask.value.priority,
-      completed: false,
-      createdAt: new Date(),
-    })
+// // Methods
+// const addTask = () => {
+//   if (newTask.value.title.trim()) {
+//     tasks.value.push({
+//       id: Date.now(),
+//       title: newTask.value.title.trim(),
+//       priority: newTask.value.priority,
+//       completed: false,
+//       createdAt: new Date(),
+//     })
 
-    // Reset form
-    newTask.value.title = ''
-    newTask.value.priority = 'medium'
-  }
-}
+//     // Reset form
+//     newTask.value.title = ''
+//     newTask.value.priority = 'medium'
+//   }
+// }
 
-const deleteTask = (id) => {
-  tasks.value = tasks.value.filter((task) => task.id !== id)
-}
+// const deleteTask = (id) => {
+//   tasks.value = tasks.value.filter((task) => task.id !== id)
+// }
 
-const formatDate = (date) => {
-  return new Intl.DateTimeFormat('en-US', {
-    month: 'short',
-    day: 'numeric',
-    hour: '2-digit',
-    minute: '2-digit',
-  }).format(date)
-}
+// const formatDate = (date) => {
+//   return new Intl.DateTimeFormat('en-US', {
+//     month: 'short',
+//     day: 'numeric',
+//     hour: '2-digit',
+//     minute: '2-digit',
+//   }).format(date)
+// }
 
-// Lifecycle
-onMounted(() => {
-  // Add some sample tasks
-  tasks.value = [
-    {
-      id: 1,
-      title: 'Learn Vue.js Composition API',
-      priority: 'high',
-      completed: true,
-      createdAt: new Date(Date.now() - 86400000),
-    },
-    {
-      id: 2,
-      title: 'Build a portfolio project',
-      priority: 'medium',
-      completed: false,
-      createdAt: new Date(Date.now() - 43200000),
-    },
-    {
-      id: 3,
-      title: 'Practice reactive programming',
-      priority: 'low',
-      completed: false,
-      createdAt: new Date(),
-    },
-  ]
-})
-</script>
+// // Lifecycle
+// onMounted(() => {
+//   // Add some sample tasks
+//   tasks.value = [
+//     {
+//       id: 1,
+//       title: 'Learn Vue.js Composition API',
+//       priority: 'high',
+//       completed: true,
+//       createdAt: new Date(Date.now() - 86400000),
+//     },
+//     {
+//       id: 2,
+//       title: 'Build a portfolio project',
+//       priority: 'medium',
+//       completed: false,
+//       createdAt: new Date(Date.now() - 43200000),
+//     },
+//     {
+//       id: 3,
+//       title: 'Practice reactive programming',
+//       priority: 'low',
+//       completed: false,
+//       createdAt: new Date(),
+//     },
+//   ]
+// })
+</script> -->
